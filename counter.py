@@ -2,6 +2,7 @@
 Implements Grow Only counter each action which
 requires state updates completely new updated
 state is returned thus avoiding mutations.
+https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#G-Counter_(Grow-only_Counter)
 """
 
 import socket
@@ -51,6 +52,10 @@ def value(state: Dict) -> int:
 def _increment(state: Dict, host: str = None) -> Dict:
     """
     Increment counter for current host
+
+        let g = myId()
+        P[g] := P[g] + 1
+
     :param state: current node state
     :param host: current host
     :return: updated state
