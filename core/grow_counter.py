@@ -6,16 +6,15 @@ https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#G-Counter_(Grow
 """
 
 import socket
+import logging
 
 from typing import Dict
 from functools import partial
 
 
 HOST = socket.gethostname()
-
-import logging
-
 logger = logging.getLogger(__name__)
+
 
 def new() -> dict:
     """Instantiate new counter"""
@@ -63,7 +62,7 @@ def _increment(state: Dict, host: str = None) -> Dict:
     :param host: current host
     :return: updated state
     """
-    logger.info(f'{host} count: {state[host] + 1}')
+    logger.info(f'view-count@{host}: {state[host] + 1}')
 
     return {
         **state,
