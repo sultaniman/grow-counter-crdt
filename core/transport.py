@@ -1,11 +1,12 @@
 import json
 import redis
+import os
 
 from functools import partial
 from typing import Callable, Dict
 
 
-connection = redis.StrictRedis()
+connection = redis.StrictRedis(host=os.getenv('REDIS_HOST', 'localhost'))
 channel = 'view-count'
 
 
