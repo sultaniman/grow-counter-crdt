@@ -1,17 +1,11 @@
-from collections import defaultdict
-
-from starlette.applications import Starlette
-from starlette.responses import JSONResponse
 import uvicorn
 
-app = Starlette(debug=True)
+from threading import Thread
 
-state
-
-@app.route('/')
-async def homepage(request):
-    return JSONResponse({'hello': 'world'})
+from core import app, transport
+from core.views import merge_state
 
 
 if __name__ == '__main__':
+    Thread(target=transport.listen, args=(merge_state,)).start()
     uvicorn.run(app, host='0.0.0.0', port=8000)
