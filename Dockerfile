@@ -3,7 +3,14 @@ FROM python:3.7.3-alpine3.9
 WORKDIR /app
 COPY . /app
 
-RUN pip install pip pipenv -U &&\
-    pipenv install
+RUN apk update && \
+    apk add --update netcat-openbsd && \
+    apk add --no-cache --virtual .build-deps build-base && \
+    pip install pip pipenv -U && \
+    pipenv install && \
+    apk del .build-deps  && \
+    rm -rf /root/.cache/pip
 
-ENTRYPOINT ["pipenv", "run", "python app.py"]
+EXPOSE 8000
+
+CMD ["scripts/run.docker.ash"]
