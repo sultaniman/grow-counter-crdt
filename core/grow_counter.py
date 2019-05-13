@@ -13,6 +13,9 @@ from functools import partial
 
 HOST = socket.gethostname()
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 def new() -> dict:
     """Instantiate new counter"""
@@ -60,6 +63,8 @@ def _increment(state: Dict, host: str = None) -> Dict:
     :param host: current host
     :return: updated state
     """
+    logger.info(f'{host} count: {state[host] + 1}')
+
     return {
         **state,
         host: state[host] + 1
