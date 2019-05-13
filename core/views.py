@@ -9,7 +9,7 @@ def merge_state(updates):
     view_counter.merge(updates)
 
 
-@app.route('/')
+@app.route('/my-video')
 async def homepage(_request):
     view_counter.increment()
     may_be_update(view_counter)
