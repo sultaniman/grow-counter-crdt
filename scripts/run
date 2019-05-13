@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 
-docker-compose up -d --build --scale web=3
+REPLICAS=${REPLICAS:-3}
+docker-compose up -d --build --scale web=${REPLICAS}
