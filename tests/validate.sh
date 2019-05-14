@@ -6,14 +6,16 @@ if ! type ab > /dev/null; then
     echo "Please install ab";
 fi;
 
-ab -t 10 -n 10000 -c 10 http://127.0.0.1/my-video
+# Wait a little bit in case if services started up with delay
+sleep 2
+ab -t 10 -n 1001 -c 10 ${URL}
 
-sleep 1
-result=$(curl ${URL})
-expected="{\"view_count\":1001}"
+# Wait until sync happens
+sleep 2
+result=$(curl -s ${URL} | jq -r ".view_count")
 
-if [[ ${result} == *"${expected}"* ]]; then
-    echo "✅ Sent 10001 requests, got 10001 as expected"
+if [[ "${result}" -ge "1000" ]]; then
+    echo "✅ Sent 1001 requests, got ${result} (one additional query) views."
 else
-    echo "💥 Test failed, expected and actual results didn't match"
+    echo "💥 Test failed, expected ~1001 got ${result}."
 fi;
