@@ -18,7 +18,7 @@ Since implementation is abstract and does not rely on exact amount of nodes
 we can be sure that eventually all view counts will be the same on all nodes.
 
 ## Prerequisites
-Project requires Docker to present in your development environment.
+Project requires Docker, Pipenv to present in your development environment.
 
 ## How to run and stop?
 
