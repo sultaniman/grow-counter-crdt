@@ -11,6 +11,11 @@ channel = 'view-count'
 
 
 def _listen(conn: redis.StrictRedis, merge_state: Callable):
+    """
+    Listen for redis channel and call callback with data.
+    :param conn: redis connection
+    :param merge_state: callback function
+    """
     sub = conn.pubsub()
     sub.subscribe([channel])
 
@@ -22,6 +27,11 @@ def _listen(conn: redis.StrictRedis, merge_state: Callable):
 
 
 def _send_updates(conn: redis.StrictRedis, updates: Dict):
+    """
+    Send updates via redis
+    :param conn: redis connection
+    :param updates: current state for node
+    """
     conn.publish(channel, json.dumps(updates))
 
 

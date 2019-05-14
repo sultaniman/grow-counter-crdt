@@ -21,6 +21,10 @@ def merge_state(updates):
 
 
 def sync():
+    """
+    Sync function to delegate state sync operation.
+    Launched from app entrypoint.
+    """
     while True:
         time.sleep(1)
         may_be_update(view_counter)
