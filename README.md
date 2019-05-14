@@ -18,7 +18,7 @@ Since implementation is abstract and does not rely on exact amount of nodes
 we can be sure that eventually all view counts will be the same on all nodes.
 
 ## Prerequisites
-Project requires Docker, Pipenv to present in your development environment.
+Project requires Docker, [Pipenv](https://docs.pipenv.org), `docker-compose` to present in your development environment.
 
 ## How to run and stop?
 
@@ -44,10 +44,12 @@ Then run the script again.
 
 Compose file uses `haproxy` to load-balance to `web` service nodes.
 
+**NOTE**: `haproxy` works with default configuration.
+
 ## Validation
 
 To validate if counters work properly you need to have `ab`
-and `jq` cli utilities installed. Once everything in place you can call.
+and [jq](https://stedolan.github.io/jq/) cli utilities installed. Once everything in place you can call.
 
 **NOTE**: make sure you started the application using `scripts/run`
 
