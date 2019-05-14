@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 REPLICAS=${REPLICAS:-3}
 docker-compose up -d --build --scale web=${REPLICAS}
