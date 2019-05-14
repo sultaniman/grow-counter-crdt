@@ -56,3 +56,19 @@ Once everything in place you can call
 ```sh
 $ tests/validate.sh
 ```
+
+## Running tests
+
+First install dev dependencies or pytest
+
+```sh
+$ pipenv install --dev
+OR
+$ pip install pytest
+```
+
+Then run
+
+```sh
+$ pytest
+```
