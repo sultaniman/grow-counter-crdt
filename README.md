@@ -46,6 +46,10 @@ Compose file uses `haproxy` to load-balance to `web` service nodes.
 
 **NOTE**: `haproxy` works with default configuration.
 
+## How to access counter
+
+To access counter please open http://127.0.0.1/my-video
+
 ## Validation
 
 To validate if counters work properly you need to have `ab`
