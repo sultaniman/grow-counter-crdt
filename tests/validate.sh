@@ -11,7 +11,9 @@ sleep 2
 ab -t 10 -n 1001 -c 10 ${URL}
 
 # Wait until sync happens
-sleep 2
+echo "🕐 Waiting 5 seconds for sync to finish…"
+sleep 5
+
 result=$(curl -s ${URL} | jq -r ".view_count")
 
 if [[ "${result}" -ge "1000" ]]; then
