@@ -3,7 +3,8 @@
 This is a demonstration of [Grow Only CRDT](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#G-Counter_(Grow-only_Counter)) counter.
 Implementation of counter only has increment and merge methods
 for the sake of simplicity and other methods may require more
-code to write and effort towards reconciliation of conflicts etc.
+code to write and effort towards reconciliation of conflicts as well
+as omitted session counting.
 
 ## Communication between nodes
 
